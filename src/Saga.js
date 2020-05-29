@@ -2,9 +2,10 @@ import {call, takeLatest, put } from "redux-saga/effects";
 import { GET_USER_CALL} from './actionTypes';
 // import Api from '...'
 
-function* getUserCall() {
+function* getUserCall(user) {
+  console.log(user)
   try {
-    const userData = yield fetch('https://api.github.com/users/5')
+    const userData = yield fetch('https://api.github.com/users/' + user.userName)
     .then(response => response.json(), );    
 yield put({ type: GET_USER_CALL, preload: userData });
 
